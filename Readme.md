@@ -123,7 +123,7 @@ Basic User Authentication
 `Headers`
 
     {
-      Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTg1NmE1OWMyNjFmMjczODM4OGQwODgiLCJyb2xl
+      Authorization: Bearer eyJhbGciOiJIUzI1NiIs.eyJfaWQiOiI2MTg1NmE1OW
     }
 
 # Users CRUD
