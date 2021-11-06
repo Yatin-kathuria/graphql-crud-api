@@ -40,7 +40,6 @@ const typeDefs = gql`
 
   type Query {
     totalPosts: TotalPosts!
-    login(email: String!, password: String!): Login
   }
 
   type Mutation {
@@ -50,6 +49,7 @@ const typeDefs = gql`
       password: String!
       role: AllowedRoles!
     ): Response
+    login(email: String!, password: String!): Login
     verify(id: String!): Response
   }
 `;

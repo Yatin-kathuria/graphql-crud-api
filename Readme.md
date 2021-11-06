@@ -80,9 +80,9 @@ Basic User Authentication
 
 ## Login
 
-`QUERY login`
+`MUTATION login`
 
-    query Query($email: String! ,$password: String!) {
+    mutation MUTATION($email: String! ,$password: String!) {
     login(password: $password, email: $email) {
         message
         token

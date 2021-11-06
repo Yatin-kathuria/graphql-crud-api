@@ -16,6 +16,25 @@ module.exports = {
     return { message: "User is succefully registered." };
   },
 
+  login: async (parent, { email, password }) => {
+    if (!validator.validateEmail(email)) throw new Error("Invalid Email");
+    const user = await userModal.findOne({ email });
+    if (!user) {
+      throw new Error(
+        "User is not exist with this Email. Please register yourself first"
+      );
+    }
+
+    const isPasswordMatch = await hashService.decryptPassword(
+      password,
+      user.password
+    );
+    if (!isPasswordMatch) throw new Error("Email or Password is incorrect");
+
+    const token = hashService.createToken({ _id: user._id, role: user.role });
+    return { message: "Succesfully login", token, user };
+  },
+
   verify: async (parent, { id }) => {
     const user = await userModal.findById({ _id: id }).exec();
     if (!user) throw new Error("Invalid user ID");
