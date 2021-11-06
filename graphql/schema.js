@@ -38,8 +38,13 @@ const typeDefs = gql`
     user
   }
 
+  type Token {
+    token: String!
+  }
+
   type Query {
     totalPosts: TotalPosts!
+    token: Token!
   }
 
   type Mutation {

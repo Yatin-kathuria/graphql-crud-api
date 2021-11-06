@@ -112,10 +112,19 @@ Basic User Authentication
 
 ## Token Fetch
 
-`GET /token`
+`QUERY token`
 
-    curl --location -g --request GET 'http://[DOMAIN]:[PORT]/token'
-    --header 'Authorization: Bearer [AUTH_TOKEN_STRING]'
+    query Token {
+        token {
+            token
+        }
+    }
+
+`Headers`
+
+    {
+      Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTg1NmE1OWMyNjFmMjczODM4OGQwODgiLCJyb2xl
+    }
 
 # Users CRUD
 
