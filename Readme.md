@@ -39,11 +39,19 @@ Basic User Authentication
 
 ## Verify the User
 
-`POST /verify`
+`MUTATION verify`
 
-    curl --location -g --request POST 'http://[DOMAIN]:[PORT]/verify'
-    --header 'Content-Type: application/x-www-form-urlencoded'
-    --data-urlencode 'id=b98b1dea-b3f4-4b72-bcdf-9d36607e2603'
+    mutation Mutation($verifyId: String!) {
+        verify(id: $verifyId) {
+            message
+        }
+    }
+
+`Variables`
+
+    {
+      "verifyId": "61856a59c261f2738388d088"
+    }
 
 ## Forgot Password
 

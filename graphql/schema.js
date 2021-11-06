@@ -50,6 +50,7 @@ const typeDefs = gql`
       password: String!
       role: AllowedRoles!
     ): Response
+    verify(id: String!): Response
   }
 `;
 

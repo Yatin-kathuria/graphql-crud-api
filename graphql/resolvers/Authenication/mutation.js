@@ -15,4 +15,14 @@ module.exports = {
 
     return { message: "User is succefully registered." };
   },
+
+  verify: async (parent, { id }) => {
+    const user = await userModal.findById({ _id: id }).exec();
+    if (!user) throw new Error("Invalid user ID");
+
+    user.verified = true;
+    await user.save();
+
+    return { message: "User verified succefully" };
+  },
 };
