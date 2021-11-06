@@ -30,12 +30,10 @@ Basic User Authentication
 
 `Variables`
 
-    {
-      "name": "yatin",
-      "email": "yatin7@gmail.com",
-      "password": "test",
-      "role": "admin" || "users"
-    }
+     name: "yatin",
+     email: "yatin7@gmail.com",
+     password: "test",
+     role: "admin" || "users"
 
 ## Verify the User
 
@@ -49,9 +47,7 @@ Basic User Authentication
 
 `Variables`
 
-    {
-      "verifyId": "61856a59c261f2738388d088"
-    }
+     verifyId: "61856a59c261f2738388d088"
 
 ## Forgot Password
 
@@ -105,10 +101,8 @@ Basic User Authentication
 
 `Variables`
 
-    {
-        "email": "yatin7@gmail.com",
-        "password": "test"
-    }
+    email": "yatin7@gmail.com",
+    password": "test"
 
 ## Token Fetch
 
@@ -122,9 +116,7 @@ Basic User Authentication
 
 `Headers`
 
-    {
-      Authorization: Bearer eyJhbGciOiJIUzI1NiIs.eyJfaWQiOiI2MTg1NmE1OW
-    }
+     Authorization: Bearer eyJhbGciOiJIUzI1NiIs.eyJfaWQiOiI2MTg1NmE1OW
 
 # Users CRUD
 
