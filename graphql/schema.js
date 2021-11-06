@@ -37,6 +37,11 @@ const typeDefs = gql`
     token: String!
   }
 
+  type ForgetPassword {
+    resetToken: String!
+    message: String!
+  }
+
   type Query {
     token: Token!
   }
@@ -50,6 +55,7 @@ const typeDefs = gql`
     ): Response
     login(email: String!, password: String!): Login
     verify(id: String!): Response
+    forgetPassword(email: String!): ForgetPassword
   }
 `;
 

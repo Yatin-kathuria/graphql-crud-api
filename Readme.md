@@ -51,12 +51,18 @@ Basic User Authentication
 
 ## Forgot Password
 
-`POST /forgot`
+`MUTATION verify`
 
-    curl --location -g --request POST 'http://[DOMAIN]:[PORT]/forgot'
-    --header 'Content-Type: application/x-www-form-urlencoded'
-    --header 'Accept-Language: en'
-    --data-urlencode 'email=admin@admin.com'
+    mutation ForgetPassword($email: String!) {
+        forgetPassword(email: $email) {
+            resetToken
+            message
+        }
+    }
+
+`Variables`
+
+     email: "test@test.com"
 
 ### Response
 

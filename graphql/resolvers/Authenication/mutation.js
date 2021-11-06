@@ -44,4 +44,19 @@ module.exports = {
 
     return { message: "User verified succefully" };
   },
+
+  forgetPassword: async (parent, { email }) => {
+    if (!validator.validateEmail(email)) throw new Error("Invalid Email");
+
+    const savedUser = await userModal.findOne({ email });
+    if (!savedUser) throw new Error("User not exist with this email ID");
+
+    const resetToken = hashService.generateForgetPasswordToken({ email });
+
+    return {
+      resetToken,
+      message:
+        "send this token to us during reset the password in Id field within 10 minutes.",
+    };
+  },
 };
