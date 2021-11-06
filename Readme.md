@@ -51,7 +51,7 @@ Basic User Authentication
 
 ## Forgot Password
 
-`MUTATION verify`
+`MUTATION forgetPassword`
 
     mutation ForgetPassword($email: String!) {
         forgetPassword(email: $email) {
@@ -63,13 +63,6 @@ Basic User Authentication
 `Variables`
 
      email: "test@test.com"
-
-### Response
-
-    HTTP/1.1 200 OK
-    Content-Type: application/json
-
-    {"token":"dffs8f7sf9fyfywe98yyr38rhy8rh238rrr.rrg8rg829r2grr9wgfgwfw","message":"message"}
 
 ## Reset Password
 
