@@ -27,7 +27,7 @@ Basic User Authentication
         message
       }
     }
-    
+
 `Variables`
 
     {
@@ -72,12 +72,35 @@ Basic User Authentication
 
 ## Login
 
-`POST /login`
+`QUERY login`
 
-    curl --location -g --request POST 'http://[DOMAIN]:[PORT]/login'
-    --header 'Content-Type: application/x-www-form-urlencoded'
-    --data-urlencode 'email=admin@admin.com'
-    --data-urlencode 'password=12345'
+    query Query($email: String! ,$password: String!) {
+    login(password: $password, email: $email) {
+        message
+        token
+        user {
+            _id
+            verified
+            urlGitHub
+            urlTwitter
+            name
+            email
+            role
+            phone
+            city
+            country
+            createdAt
+            updatedAt
+            }
+        }
+    }
+
+`Variables`
+
+    {
+        "email": "yatin7@gmail.com",
+        "password": "test"
+    }
 
 ## Token Fetch
 
