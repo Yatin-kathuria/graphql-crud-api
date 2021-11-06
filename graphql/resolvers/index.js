@@ -4,10 +4,6 @@ const { GraphQLDateTime } = require("graphql-iso-date");
 
 const resolvers = {
   Query: {
-    totalPosts: () => ({
-      name: "yatin",
-      age: 28,
-    }),
     ...authenicationQuery,
   },
   Mutation: {

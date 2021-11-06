@@ -3,11 +3,6 @@ const { gql } = require("apollo-server-express");
 const typeDefs = gql`
   scalar ISODate
 
-  type TotalPosts {
-    name: String!
-    age: Int!
-  }
-
   type User {
     _id: String!
     name: String!
@@ -43,7 +38,6 @@ const typeDefs = gql`
   }
 
   type Query {
-    totalPosts: TotalPosts!
     token: Token!
   }
 
