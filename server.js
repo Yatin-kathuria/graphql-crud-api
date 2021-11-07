@@ -16,15 +16,15 @@ async function startServer() {
     formatError: (err) => err.message,
     context: async ({ req }) => {
       const authorization = req.headers.authorization;
-      if (!authorization) return { isLogin: false };
+      if (!authorization) return { loggedIn: false };
 
       const token = authorization.split(" ")[1];
       const verified = hashService.verifyToken(token);
-      if (!verified) return { isLogin: false };
+      if (!verified) return { loggedIn: false };
 
       const user = await userModal.findById(verified._id);
       return {
-        isLogin: true,
+        loggedIn: true,
         user,
         isAdmin: user.role === "admin" ? true : false,
       };
