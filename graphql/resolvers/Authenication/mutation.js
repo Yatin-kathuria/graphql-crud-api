@@ -59,4 +59,22 @@ module.exports = {
         "send this token to us during reset the password in Id field within 10 minutes.",
     };
   },
+
+  reset: async (parent, { resetToken, password }) => {
+    const { email } = hashService.verifyForgetPasswordToken(resetToken);
+    const savedUser = await userModal.findOne({ email });
+    const isPasswordMatch = await hashService.decryptPassword(
+      password,
+      savedUser.password
+    );
+
+    if (isPasswordMatch)
+      throw new Error("Old and New Password must be different.");
+
+    const hashPassword = await hashService.encryptPassword(password);
+    savedUser.password = hashPassword;
+    await savedUser.save();
+
+    return { message: "Password Updated successfully" };
+  },
 };

@@ -66,12 +66,18 @@ Basic User Authentication
 
 ## Reset Password
 
-`POST /reset`
+`MUTATION reset`
 
-    curl --location -g --request POST 'http://[DOMAIN]:[PORT]/reset'
-    --header 'Content-Type: application/x-www-form-urlencoded'
-    --data-urlencode 'token=dffs8f7sf9fyfywe98yyr38rhy8rh238rrr.rrg8rg829r2grr9wgfgwfw'
-    --data-urlencode 'password=12345'
+    mutation Reset($resetToken: String!, $password: String!) {
+        reset(resetToken: $resetToken, password: $password) {
+            message
+        }
+    }
+
+`Variables`
+
+     resetToken: "2MzcxMDExfQ.43X3Rxfx-aoUCMdYxrgMGcFUs5inGBK6H1GDiF3PlY4"
+     password: "test"
 
 ## Login
 

@@ -37,10 +37,8 @@ async function startServer() {
 
 startServer();
 
-app.get("/rest", (req, res) => {
-  res.json({
-    data: "API is working...",
-  });
+app.get("/", (req, res) => {
+  res.redirect("/graphql");
 });
 
 app.listen(process.env.PORT, async () => {
