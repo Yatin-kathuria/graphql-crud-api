@@ -75,6 +75,7 @@ const typeDefs = gql`
     forgetPassword(email: String!): ForgetPassword
     reset(resetToken: String!, password: String!): Response
     createUser(input: createUserInput): createUserResponse
+    deleteUser(id: String!): Response
   }
 `;
 

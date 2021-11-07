@@ -4,7 +4,9 @@ const validatorService = require("../../../Services/validator");
 const hashService = require("../../../Services/hashService");
 
 module.exports = {
-  createUser: async (parent, { input }) => {
+  createUser: async (parent, { input }, { LOGGED_IN, ADMIN }) => {
+    if (!LOGGED_IN || !ADMIN) throw new Error("Unauthorized");
+
     const { email, password } = input;
     if (!validatorService.validateEmail(email)) {
       throw new Error("Invalid Email");
@@ -20,7 +22,12 @@ module.exports = {
       password: hashPassword,
     });
 
-    console.log(savedUser);
     return { message: "User is succefully registered.", user: savedUser };
+  },
+
+  deleteUser: async (parent, { id }, { LOGGED_IN, ADMIN }) => {
+    if (!LOGGED_IN || !ADMIN) throw new Error("Unauthorized");
+    await userModal.deleteOne({ _id: id }).exec();
+    return { message: "User is succefully deleted." };
   },
 };

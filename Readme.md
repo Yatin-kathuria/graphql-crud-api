@@ -176,10 +176,21 @@ Basic User CRUD operation
 
 ## User Deletion
 
-`DELETE /users/5aab2443ef417d2d19e6c8f2`
+`MUTATION DeleteUser`
 
-    curl --location -g --request DELETE 'http://[DOMAIN]:[PORT]/users/5aab2443ef417d2d19e6c8f2'
-    --header 'Authorization: Bearer [AUTH_TOKEN_STRING]'
+    mutation DeleteUser($id: String!) {
+        deleteUser(id: $id) {
+            message
+        }
+    }
+
+`Variables`
+
+    id: "618804402d5ee64df0d277d9"
+
+`Headers`
+
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIs.eyJfaWQiOiI2MTg1NmE1OW
 
 ## User Single Fetch
 
