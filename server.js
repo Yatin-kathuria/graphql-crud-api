@@ -3,10 +3,9 @@ const express = require("express");
 const app = express();
 const { ApolloServer } = require("apollo-server-express");
 const dbConnection = require("./connection");
-const userModal = require("./model/user");
-const hashService = require("./Services/hashService");
 const typeDefs = require("./graphql/schema");
 const resolvers = require("./graphql/resolvers");
+const context = require("./graphql/context");
 
 //graphql server
 async function startServer() {
@@ -14,21 +13,7 @@ async function startServer() {
     typeDefs,
     resolvers,
     formatError: (err) => err.message,
-    context: async ({ req }) => {
-      const authorization = req.headers.authorization;
-      if (!authorization) return { LOGGED_IN: false };
-
-      const token = authorization.split(" ")[1];
-      const verified = hashService.verifyToken(token);
-      if (!verified) return { LOGGED_IN: false };
-
-      const user = await userModal.findById(verified._id);
-      return {
-        LOGGED_IN: true,
-        user,
-        ADMIN: user.role === "admin" ? true : false,
-      };
-    },
+    context: context,
   });
 
   await apolloServer.start();
