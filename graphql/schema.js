@@ -47,6 +47,10 @@ const typeDefs = gql`
     user: User
   }
 
+  type singleUserResponse {
+    user: User
+  }
+
   input registerInput {
     name: String!
     email: String!
@@ -66,6 +70,7 @@ const typeDefs = gql`
 
   type Query {
     token: Token!
+    singleUser(id: String!): singleUserResponse
   }
 
   type Mutation {

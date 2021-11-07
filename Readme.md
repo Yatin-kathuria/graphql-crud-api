@@ -194,10 +194,34 @@ Basic User CRUD operation
 
 ## User Single Fetch
 
-`GET /users/5aa1c2c35ef7a4e97b5e995a`
+`QUERY SingleUser`
 
-    curl --location -g --request GET 'http://[DOMAIN]:[PORT]/users/5aa1c2c35ef7a4e97b5e995a'
-    --header 'Authorization: Bearer [AUTH_TOKEN_STRING]'
+    query SingleUser($id: String!) {
+        singleUser(id: $id) {
+            user {
+                _id
+                name
+                email
+                role
+                verified
+                phone
+                city
+                country
+                urlTwitter
+                urlGitHub
+                createdAt
+                updatedAt
+            }
+        }
+    }
+
+`Variables`
+
+    id: "61856a59c261f2738388d088"
+
+`Headers`
+
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIs.eyJfaWQiOiI2MTg1NmE1OW
 
 ## User Update
 
