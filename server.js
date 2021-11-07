@@ -16,17 +16,17 @@ async function startServer() {
     formatError: (err) => err.message,
     context: async ({ req }) => {
       const authorization = req.headers.authorization;
-      if (!authorization) return { loggedIn: false };
+      if (!authorization) return { LOGGED_IN: false };
 
       const token = authorization.split(" ")[1];
       const verified = hashService.verifyToken(token);
-      if (!verified) return { loggedIn: false };
+      if (!verified) return { LOGGED_IN: false };
 
       const user = await userModal.findById(verified._id);
       return {
-        loggedIn: true,
+        LOGGED_IN: true,
         user,
-        isAdmin: user.role === "admin" ? true : false,
+        ADMIN: user.role === "admin" ? true : false,
       };
     },
   });
