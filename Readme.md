@@ -30,10 +30,10 @@ Basic User Authentication
 
 `Variables`
 
-     name: "yatin",
-     email: "yatin7@gmail.com",
-     password: "test",
-     role: "admin" || "users"
+    name: "yatin",
+    email: "yatin7@gmail.com",
+    password: "test",
+    role: "admin" || "users"
 
 ## Verify the User
 
@@ -47,7 +47,7 @@ Basic User Authentication
 
 `Variables`
 
-     verifyId: "61856a59c261f2738388d088"
+    verifyId: "61856a59c261f2738388d088"
 
 ## Forgot Password
 
@@ -62,7 +62,7 @@ Basic User Authentication
 
 `Variables`
 
-     email: "test@test.com"
+    email: "test@test.com"
 
 ## Reset Password
 
@@ -76,8 +76,8 @@ Basic User Authentication
 
 `Variables`
 
-     resetToken: "2MzcxMDExfQ.43X3Rxfx-aoUCMdYxrgMGcFUs5inGBK6H1GDiF3PlY4"
-     password: "test"
+    resetToken: "2MzcxMDExfQ.43X3Rxfx-aoUCMdYxrgMGcFUs5inGBK6H1GDiF3PlY4"
+    password: "test"
 
 ## Login
 
@@ -106,8 +106,8 @@ Basic User Authentication
 
 `Variables`
 
-    email": "yatin7@gmail.com",
-    password": "test"
+    email: "yatin7@gmail.com",
+    password: "test"
 
 ## Token Fetch
 
@@ -121,7 +121,7 @@ Basic User Authentication
 
 `Headers`
 
-     Authorization: Bearer eyJhbGciOiJIUzI1NiIs.eyJfaWQiOiI2MTg1NmE1OW
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIs.eyJfaWQiOiI2MTg1NmE1OW
 
 # Users CRUD
 
@@ -136,18 +136,41 @@ Basic User CRUD operation
 
 ## User Creation
 
-`POST /users`
+`MUTATION register`
 
-    curl --location -g --request POST 'http://[DOMAIN]:[PORT]/users'
-    --header 'Authorization: Bearer [AUTH_TOKEN_STRING]'
-    --header 'Content-Type: application/x-www-form-urlencoded'
-    --data-urlencode 'name=New User'
-    --data-urlencode 'email=myemail@email.com'
-    --data-urlencode 'password=12345'
-    --data-urlencode 'role=admin'
-    --data-urlencode 'phone=123123'
-    --data-urlencode 'city=Bucaramamga'
-    --data-urlencode 'country=Colombia'
+    mutation CreateUser($input: createUserInput) {
+        createUser(input: $input) {
+            message
+            user {
+                _id
+                name
+                email
+                role
+                verified
+                phone
+                city
+                country
+                urlTwitter
+                urlGitHub
+                updatedAt
+                createdAt
+            }
+        }
+    }
+
+`Variables`
+
+    name: "yatin",
+    email: "yatin7@gmail.com",
+    password: "test",
+    role: "admin" || "users"
+    city: "delhi",
+    country: "india",
+    phone: "13124242323"
+
+`Headers`
+
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIs.eyJfaWQiOiI2MTg1NmE1OW
 
 ## User Deletion
 
