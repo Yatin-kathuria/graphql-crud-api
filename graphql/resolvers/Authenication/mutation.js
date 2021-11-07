@@ -4,7 +4,8 @@ const validator = require("../../../Services/validator");
 const hashService = require("../../../Services/hashService");
 
 module.exports = {
-  register: async (parent, { name, email, password, role }) => {
+  register: async (parent, { input }) => {
+    const { name, email, password, role } = input;
     if (!validator.validateEmail(email)) throw new Error("Invalid Email");
 
     const user = await userModal.findOne({ email }).exec();
