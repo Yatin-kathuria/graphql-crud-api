@@ -30,4 +30,10 @@ module.exports = {
     await userModal.deleteOne({ _id: id }).exec();
     return { message: "User is succefully deleted." };
   },
+
+  updateUser: async (parent, { id, userDetails }, { LOGGED_IN, ADMIN }) => {
+    if (!LOGGED_IN || !ADMIN) throw new Error("Unauthorized");
+    await userModal.updateOne({ _id: id }, userDetails);
+    return { message: "User updated" };
+  },
 };

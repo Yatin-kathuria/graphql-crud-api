@@ -68,6 +68,15 @@ const typeDefs = gql`
     role: AllowedRoles!
   }
 
+  input UserDetailsInput {
+    name: String
+    email: String
+    role: String
+    phone: String
+    city: String
+    country: String
+  }
+
   type Query {
     token: Token!
     singleUser(id: String!): singleUserResponse
@@ -81,6 +90,7 @@ const typeDefs = gql`
     reset(resetToken: String!, password: String!): Response
     createUser(input: createUserInput): createUserResponse
     deleteUser(id: String!): Response
+    updateUser(id: String!, userDetails: UserDetailsInput!): Response
   }
 `;
 

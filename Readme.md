@@ -225,17 +225,29 @@ Basic User CRUD operation
 
 ## User Update
 
-`PATCH /users/5aa1c2c35ef7a4e97b5e995a`
+`MUTATION updateUser`
 
-    curl --location --request PATCH 'http://localhost:3000/users/5aa1c2c35ef7a4e97b5e995a'
-    --header 'Authorization: Bearer [AUTH_TOKEN_STRING]'
-    --header 'Content-Type: application/x-www-form-urlencoded'
-    --data-urlencode 'name=New Name'
-    --data-urlencode 'email=new@email.com'
-    --data-urlencode 'role=admin'
-    --data-urlencode 'phone=12345'
-    --data-urlencode 'city=Cali'
-    --data-urlencode 'country=Colombia'
+    mutation Mutation($id: String!, $userDetails: UserDetailsInput!) {
+        updateUser(id: $id, userDetails: $userDetails) {
+            message
+        }
+    }
+
+`Variables`
+
+    id: "6182bc91a1be9b300dda0ce1",
+    userDetails: {
+        email: "monika23@gmail.com",
+        name: "test",
+        role: "user",
+        phone: "3242423",
+        city: "delhi",
+        country: "UK"
+    }
+
+`Headers`
+
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIs.eyJfaWQiOiI2MTg1NmE1OW
 
 # Profile CRUD
 
