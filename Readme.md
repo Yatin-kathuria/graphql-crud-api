@@ -160,13 +160,15 @@ Basic User CRUD operation
 
 `Variables`
 
-    name: "yatin",
-    email: "yatin7@gmail.com",
-    password: "test",
-    role: "admin" || "users"
-    city: "delhi",
-    country: "india",
-    phone: "13124242323"
+    input {
+        name: "yatin",
+        email: "yatin7@gmail.com",
+        password: "test",
+        role: "admin" || "users"
+        city: "delhi",
+        country: "india",
+        phone: "13124242323"
+    }
 
 `Headers`
 
