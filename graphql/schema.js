@@ -1,4 +1,4 @@
-const { gql } = require("apollo-server-express");
+const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
   scalar ISODate
@@ -80,6 +80,7 @@ const typeDefs = gql`
   type Query {
     token: Token!
     singleUser(id: String!): singleUserResponse
+    users(page: Int, limit: Int, sort: String, order: Int): [User]
   }
 
   type Mutation {
