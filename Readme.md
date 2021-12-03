@@ -22,68 +22,85 @@ Basic User Authentication
 
 `MUTATION register`
 
-    mutation Mutation($name: String!, $email: String!, $password: String!, $role: AllowedRoles!) {
-      register(name: $name, email: $email, password: $password, role: $role) {
-        message
-      }
+```graphql
+mutation Mutation($name: String!, $email: String!, $password: String!, $role: AllowedRoles!) {
+    register(name: $name, email: $email, password: $password, role: $role) {
+    message
     }
+}
+```
 
 `Variables`
 
-    name: "yatin",
-    email: "yatin7@gmail.com",
-    password: "test",
-    role: "admin" || "users"
+```graphql
+name: "yatin",
+email: "yatin7@gmail.com",
+password: "test",
+role: "admin" || "users"
+```
 
 ## Verify the User
 
 `MUTATION verify`
 
-    mutation Mutation($verifyId: String!) {
-        verify(id: $verifyId) {
-            message
-        }
+```graphql
+mutation Mutation($verifyId: String!) {
+    verify(id: $verifyId) {
+        message
     }
+}
+```
 
 `Variables`
 
-    verifyId: "61856a59c261f2738388d088"
+```graphql
+verifyId: "61856a59c261f2738388d088"
+```
 
 ## Forgot Password
 
 `MUTATION forgetPassword`
 
-    mutation ForgetPassword($email: String!) {
-        forgetPassword(email: $email) {
-            resetToken
-            message
-        }
+```graphql
+mutation ForgetPassword($email: String!) {
+    forgetPassword(email: $email) {
+        resetToken
+        message
     }
+}
+```
 
 `Variables`
 
-    email: "test@test.com"
+```graphql
+email: "test@test.com"
+```
 
 ## Reset Password
 
 `MUTATION reset`
 
-    mutation Reset($resetToken: String!, $password: String!) {
-        reset(resetToken: $resetToken, password: $password) {
-            message
-        }
+```graphql
+mutation Reset($resetToken: String!, $password: String!) {
+    reset(resetToken: $resetToken, password: $password) {
+        message
     }
+}
+```
 
 `Variables`
 
-    resetToken: "2MzcxMDExfQ.43X3Rxfx-aoUCMdYxrgMGcFUs5inGBK6H1GDiF3PlY4"
-    password: "test"
+```graphql
+resetToken: "2MzcxMDExfQ.43X3Rxfx-aoUCMdYxrgMGcFUs5inGBK6H1GDiF3PlY4"
+password: "test"
+```
 
 ## Login
 
 `MUTATION login`
 
-    mutation MUTATION($email: String! ,$password: String!) {
+```graphql
+mutation MUTATION($email: String! ,$password: String!) {
     login(password: $password, email: $email) {
         message
         token
@@ -100,28 +117,35 @@ Basic User Authentication
             country
             createdAt
             updatedAt
-            }
         }
     }
+}
+```
 
 `Variables`
 
-    email: "yatin7@gmail.com",
-    password: "test"
+```graphql
+email: "yatin7@gmail.com",
+password: "test"
+```
 
 ## Token Fetch
 
 `QUERY token`
 
-    query Token {
-        token {
-            token
-        }
+```graphql
+query Token {
+    token {
+        token
     }
+}
+```
 
 `Headers`
 
-    Authorization: Bearer eyJhbGciOiJIUzI1NiIs.eyJfaWQiOiI2MTg1NmE1OW
+```graphql
+Authorization: Bearer eyJhbGciOiJIUzI1NiIs.eyJfaWQiOiI2MTg1NmE1OW
+```
 
 # Users CRUD
 
@@ -131,123 +155,148 @@ Basic User CRUD operation
 
 `GET /users?filter=ad&fields=name,email&page=1&limit=10&sort=name&order=-1`
 
-    curl --location -g --request GET 'http://[DOMAIN]:[PORT]/users?filter=ad&fields=name,email&page=1&limit=10&sort=name&order=-1'
-    --header 'Authorization: Bearer [AUTH_TOKEN_STRING]'
+```curl
+curl --location -g --request GET 'http://[DOMAIN]:[PORT]/users?filter=ad&fields=name,email&page=1&limit=10&sort=name&order=-1'
+--header 'Authorization: Bearer [AUTH_TOKEN_STRING]'
+```
 
 ## User Creation
 
 `MUTATION register`
 
-    mutation CreateUser($input: createUserInput) {
-        createUser(input: $input) {
-            message
-            user {
-                _id
-                name
-                email
-                role
-                verified
-                phone
-                city
-                country
-                urlTwitter
-                urlGitHub
-                updatedAt
-                createdAt
-            }
+```graphql
+mutation CreateUser($input: createUserInput) {
+    createUser(input: $input) {
+        message
+        user {
+            _id
+            name
+            email
+            role
+            verified
+            phone
+            city
+            country
+            urlTwitter
+            urlGitHub
+            updatedAt
+            createdAt
         }
     }
+}
+```
 
 `Variables`
 
-    input {
-        name: "yatin",
-        email: "yatin7@gmail.com",
-        password: "test",
-        role: "admin" || "users"
-        city: "delhi",
-        country: "india",
-        phone: "13124242323"
-    }
+```graphql
+input {
+    name: "yatin",
+    email: "yatin7@gmail.com",
+    password: "test",
+    role: "admin" || "users"
+    city: "delhi",
+    country: "india",
+    phone: "13124242323"
+}
+```
 
 `Headers`
 
-    Authorization: Bearer eyJhbGciOiJIUzI1NiIs.eyJfaWQiOiI2MTg1NmE1OW
+```graphql
+Authorization: Bearer eyJhbGciOiJIUzI1NiIs.eyJfaWQiOiI2MTg1NmE1OW
+```
 
 ## User Deletion
 
 `MUTATION DeleteUser`
 
-    mutation DeleteUser($id: String!) {
-        deleteUser(id: $id) {
-            message
-        }
+```graphql
+mutation DeleteUser($id: String!) {
+    deleteUser(id: $id) {
+        message
     }
+}
+```
 
 `Variables`
 
-    id: "618804402d5ee64df0d277d9"
+```graphql
+id: "618804402d5ee64df0d277d9"
+```
 
 `Headers`
 
-    Authorization: Bearer eyJhbGciOiJIUzI1NiIs.eyJfaWQiOiI2MTg1NmE1OW
+```graphql
+Authorization: Bearer eyJhbGciOiJIUzI1NiIs.eyJfaWQiOiI2MTg1NmE1OW
+```
 
 ## User Single Fetch
 
 `QUERY SingleUser`
-
-    query SingleUser($id: String!) {
-        singleUser(id: $id) {
-            user {
-                _id
-                name
-                email
-                role
-                verified
-                phone
-                city
-                country
-                urlTwitter
-                urlGitHub
-                createdAt
-                updatedAt
-            }
+```graphql
+query SingleUser($id: String!) {
+    singleUser(id: $id) {
+        user {
+            _id
+            name
+            email
+            role
+            verified
+            phone
+            city
+            country
+            urlTwitter
+            urlGitHub
+            createdAt
+            updatedAt
         }
     }
+}
+```
 
 `Variables`
 
-    id: "61856a59c261f2738388d088"
+```graphql
+id: "61856a59c261f2738388d088"
+```
 
 `Headers`
 
-    Authorization: Bearer eyJhbGciOiJIUzI1NiIs.eyJfaWQiOiI2MTg1NmE1OW
+```graphql
+Authorization: Bearer eyJhbGciOiJIUzI1NiIs.eyJfaWQiOiI2MTg1NmE1OW
+```
 
 ## User Update
 
 `MUTATION updateUser`
 
-    mutation Mutation($id: String!, $userDetails: UserDetailsInput!) {
-        updateUser(id: $id, userDetails: $userDetails) {
-            message
-        }
+```graphql
+mutation Mutation($id: String!, $userDetails: UserDetailsInput!) {
+    updateUser(id: $id, userDetails: $userDetails) {
+        message
     }
+}
+```
 
 `Variables`
 
-    id: "6182bc91a1be9b300dda0ce1",
-    userDetails: {
-        email: "monika23@gmail.com",
-        name: "test",
-        role: "user",
-        phone: "3242423",
-        city: "delhi",
-        country: "UK"
-    }
+```graphql
+id: "6182bc91a1be9b300dda0ce1",
+userDetails: {
+    email: "monika23@gmail.com",
+    name: "test",
+    role: "user",
+    phone: "3242423",
+    city: "delhi",
+    country: "UK"
+}
+```
 
 `Headers`
 
-    Authorization: Bearer eyJhbGciOiJIUzI1NiIs.eyJfaWQiOiI2MTg1NmE1OW
+```graphql
+Authorization: Bearer eyJhbGciOiJIUzI1NiIs.eyJfaWQiOiI2MTg1NmE1OW
+```
 
 # Profile CRUD
 
