@@ -339,10 +339,32 @@ Basic Profile CRUD operation
 
 ## Profile Fetch
 
-`GET /profile`
+`QUERY Profile`
 
-    curl --location -g --request GET 'http://[DOMAIN]:[PORT]/profile'
-    --header 'Authorization: Bearer [AUTH_TOKEN_STRING]'
+```graphql
+query Profile {
+  profile {
+    name
+    _id
+    email
+    role
+    verified
+    phone
+    city
+    country
+    urlTwitter
+    urlGitHub
+    createdAt
+    updatedAt
+  }
+}
+```
+
+`Headers`
+
+```graphql
+Authorization: Bearer eyJhbGciOiJIUzI1NiIs.eyJfaWQiOiI2MTg1NmE1OW
+```
 
 ## Profile Update
 

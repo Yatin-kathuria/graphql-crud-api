@@ -81,6 +81,7 @@ const typeDefs = gql`
     token: Token!
     singleUser(id: String!): singleUserResponse
     users(page: Int, limit: Int, sort: String, order: Int): [User]
+    profile: User
   }
 
   type Mutation {
