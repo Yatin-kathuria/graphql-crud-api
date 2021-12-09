@@ -51,6 +51,11 @@ const typeDefs = gql`
     user: User
   }
 
+  type City {
+    name: String!
+    _id: String!
+  }
+
   input registerInput {
     name: String!
     email: String!
@@ -82,6 +87,7 @@ const typeDefs = gql`
     singleUser(id: String!): singleUserResponse
     users(page: Int, limit: Int, sort: String, order: Int): [User]
     profile: User
+    allCity: [City]
   }
 
   type Mutation {

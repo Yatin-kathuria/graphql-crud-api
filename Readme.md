@@ -428,10 +428,22 @@ Basic Cities CRUD operation
 
 ## Cities List
 
-`GET /cities/all`
+`QUERY allCity`
 
-    curl --location -g --request GET 'http://[DOMAIN]:[PORT]/cities/all'
-    --header 'Authorization: Bearer [AUTH_TOKEN_STRING]'
+```graphql
+query Query {
+  allCity {
+    name
+    _id
+  }
+}
+```
+
+`Headers`
+
+```graphql
+Authorization: Bearer eyJhbGciOiJIUzI1NiIs.eyJfaWQiOiI2MTg1NmE1OW
+```
 
 ## Cities List with Condition
 
