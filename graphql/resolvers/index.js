@@ -4,6 +4,7 @@ const authenicationQuery = require('./Authenication/query');
 const userMutation = require('./user/mutation');
 const userQuery = require('./user/query');
 const profileQuery = require('./profile/query');
+const profileMutation = require('./profile/mutation');
 
 const resolvers = {
   Query: {
@@ -14,6 +15,7 @@ const resolvers = {
   Mutation: {
     ...authenicationMutation,
     ...userMutation,
+    ...profileMutation,
   },
   ISODate: GraphQLDateTime,
 };

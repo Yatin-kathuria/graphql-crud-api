@@ -368,17 +368,34 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIs.eyJfaWQiOiI2MTg1NmE1OW
 
 ## Profile Update
 
-`PATCH /profile`
+`MUTATION updateProfile`
 
-    curl --location -g --request PATCH 'http://[DOMAIN]:[PORT]/profile'
-    --header 'Authorization: Bearer [AUTH_TOKEN_STRING]'
-    --header 'Content-Type: application/x-www-form-urlencoded'
-    --data-urlencode 'name=My Name'
-    --data-urlencode 'urlTwitter=https://hello.com'
-    --data-urlencode 'urlGitHub=https://hello.io'
-    --data-urlencode 'phone=444444'
-    --data-urlencode 'city=Boston2'
-    --data-urlencode 'country=Colombia2'
+```graphql
+mutation UpdateProfile($userDetails: UserDetailsInput!) {
+  updateProfile(userDetails: $userDetails) {
+    message
+  }
+}
+```
+
+`Variables`
+
+```graphql
+userDetails: {
+    email: "test@gmail.com",
+    name: "test",
+    role: "user",
+    phone: "3242423",
+    city: "delhi",
+    country: "India"
+}
+```
+
+`Headers`
+
+```graphql
+Authorization: Bearer eyJhbGciOiJIUzI1NiIs.eyJfaWQiOiI2MTg1NmE1OW
+```
 
 ## Change Password
 

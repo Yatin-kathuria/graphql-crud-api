@@ -93,6 +93,7 @@ const typeDefs = gql`
     createUser(input: createUserInput): createUserResponse
     deleteUser(id: String!): Response
     updateUser(id: String!, userDetails: UserDetailsInput!): Response
+    updateProfile(userDetails: UserDetailsInput!): Response
   }
 `;
 
