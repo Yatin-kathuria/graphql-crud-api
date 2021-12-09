@@ -94,6 +94,7 @@ const typeDefs = gql`
     deleteUser(id: String!): Response
     updateUser(id: String!, userDetails: UserDetailsInput!): Response
     updateProfile(userDetails: UserDetailsInput!): Response
+    changePassword(oldPassword: String!, newPassword: String!): Response
   }
 `;
 

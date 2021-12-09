@@ -399,13 +399,28 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIs.eyJfaWQiOiI2MTg1NmE1OW
 
 ## Change Password
 
-`POST /profile/changePassword`
+`MUTATION changePassword`
 
-    curl --location -g --request POST 'http://[DOMAIN]:[PORT]/profile/changePassword'
-    --header 'Authorization: Bearer [AUTH_TOKEN_STRING]'
-    --header 'Content-Type: application/x-www-form-urlencoded'
-    --data-urlencode 'oldPassword=12345'
-    --data-urlencode 'newPassword=12345'
+```graphql
+mutation ChangePassword($oldPassword: String!, $newPassword: String!) {
+  changePassword(oldPassword: $oldPassword, newPassword: $newPassword) {
+    message
+  }
+}
+```
+
+`Variables`
+
+```graphql
+oldPassword: "test2",
+newPassword: "test"
+```
+
+`Headers`
+
+```graphql
+Authorization: Bearer eyJhbGciOiJIUzI1NiIs.eyJfaWQiOiI2MTg1NmE1OW
+```
 
 # Cities CRUD
 
